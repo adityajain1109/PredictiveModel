@@ -1,0 +1,105 @@
+<html>
+            <head>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background: #f5f5f5;
+                    }
+                    .card {
+                        width: 380px;
+                        border: 1px solid #ddd;
+                        border-radius: 12px;
+                        padding: 16px;
+                        margin: 12px;
+                        background: #fff;
+                        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                    }
+                    .card-header {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                    }
+                    .score-circle {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        border: 3px solid green;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: green;
+                        text-align: center;
+                        line-height: 1.1;
+                        padding: 6px;
+                    }
+                    .title {
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin: 0;
+                        text-align: left;
+                        flex-grow: 1;
+                    }
+                    .icons {
+                        display: flex;
+                        gap: 6px;
+                    }
+                    .icons span {
+                        font-size: 20px;
+                        cursor: pointer;
+                    }
+                    .section {
+                        margin-top: 12px;
+                    }
+                    .section h4 {
+                        margin: 0 0 6px 0;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                    .positive {
+                        background: #e6f2ff;
+                        padding: 8px;
+                        border-radius: 8px;
+                        margin-bottom: 10px;
+                    }
+                    .negative {
+                        background: #fdeaea;
+                        padding: 8px;
+                        border-radius: 8px;
+                    }
+                    .item {
+                        margin-bottom: 6px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="score-circle">18,500 km/yr</div>
+                        <div class="title">Vehicle Utilisation Prediction Model</div>
+                        <div class="icons">
+                            <span>👍</span>
+                            <span>👎</span>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h4>Positive Factors</h4>
+                        <div class="positive">
+                            <div class="item">⭐ Prediction accuracy within ±2,200 km for 72% of leases</div>
+                            <div class="item">⭐ Commute-based estimates showing 88% accuracy rate</div>
+                            <div class="item">⭐ Seasonal pattern recognition at 83% precision</div>
+                            <div class="item">⭐ Historical baseline variance only 6.5%</div>
+                        </div>
+
+                        <h4>Negative Factors</h4>
+                        <div class="negative">
+                            <div class="item">⭐ Hybrid work arrangements causing ±3,500 km variance</div>
+                            <div class="item">⭐ Multi-vehicle households overestimated by 4,200 km average</div>
+                            <div class="item">⭐ Lifestyle change events missed in 19% of cases</div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </html>
