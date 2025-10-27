@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Probability - SBI MF Individual Investor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .score-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .score-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 4px solid #dc3545;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #dc3545;
+            background: white;
+            position: relative;
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            background: conic-gradient(#dc3545 0deg 317deg, #e9ecef 317deg 360deg);
+            z-index: -1;
+        }
+
+        .score-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .factors-section {
+            padding: 0 24px 24px;
+        }
+
+        .factors-group {
+            margin-bottom: 24px;
+        }
+
+        .factors-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .positive-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #007bff;
+        }
+
+        .negative-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #dc3545;
+        }
+
+        .positive-header {
+            color: #007bff;
+        }
+
+        .negative-header {
+            color: #dc3545;
+        }
+
+        .factors-list {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .positive-bg {
+            background: #e3f2fd;
+        }
+
+        .negative-bg {
+            background: #ffebee;
+        }
+
+        .factor-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .factor-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .star-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .positive-star {
+            color: #007bff;
+        }
+
+        .negative-star {
+            color: #dc3545;
+        }
+
+        .factor-text {
+            font-size: 14px;
+            color: #495057;
+            line-height: 1.4;
+        }
+
+        .next-action {
+            margin-top: 24px;
+            padding: 16px;
+            background: #fff3cd;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .next-action-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+
+        .next-action-text {
+            font-size: 13px;
+            color: #856404;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="score-section">
+                <div class="score-circle">88</div>
+                <h1 class="score-title">Churn Probability</h1>
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-success" title="Approve">👍</button>
+                <button class="btn btn-secondary" title="Reject">👎</button>
+            </div>
+        </div>
+
+        <div class="factors-section">
+            <div class="factors-group">
+                <div class="factors-header positive-header">
+                    <div class="positive-dot"></div>
+                    Positive Factors
+                </div>
+                <div class="factors-list positive-bg">
+                    <div class="factor-item">
+                        <svg class="star-icon positive-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Long-term investor with 5+ years portfolio history</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon positive-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Diversified portfolio across equity and debt funds</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon positive-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Active SIP mandates running consistently</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon positive-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Regular interaction with investment reports</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="factors-group">
+                <div class="factors-header negative-header">
+                    <div class="negative-dot"></div>
+                    Negative Factors
+                </div>
+                <div class="factors-list negative-bg">
+                    <div class="factor-item">
+                        <svg class="star-icon negative-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Avg. Monthly Balance has been the lowest in the last 6 months</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon negative-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Customer not Contactable for 20 days</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon negative-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">40% Decrease in Transaction Volumes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-action">
+                <div class="next-action-title">Next Best Action</div>
+                <div class="next-action-text">Reach out with personalized retention offer. Schedule call to understand concerns and present competitive product benefits.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
