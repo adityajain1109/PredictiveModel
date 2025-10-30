@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Forecast - NJ India Securities</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .score-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .score-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 3px solid #28a745;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #28a745;
+            background: white;
+            position: relative;
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border-radius: 50%;
+            background: conic-gradient(#28a745 0deg 324deg, #e9ecef 324deg 360deg);
+            z-index: -1;
+        }
+
+        .score-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .score-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .distributor-name {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 2px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .factors-section {
+            padding: 0 24px 24px;
+        }
+
+        .factors-group {
+            margin-bottom: 24px;
+        }
+
+        .factors-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .positive-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #007bff;
+        }
+
+        .negative-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #dc3545;
+        }
+
+        .positive-header {
+            color: #007bff;
+        }
+
+        .negative-header {
+            color: #dc3545;
+        }
+
+        .factors-list {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .positive-bg {
+            background: #e3f2fd;
+        }
+
+        .negative-bg {
+            background: #ffebee;
+        }
+
+        .factor-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .factor-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .star-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .positive-star {
+            color: #007bff;
+        }
+
+        .negative-star {
+            color: #dc3545;
+        }
+
+        .factor-text {
+            font-size: 14px;
+            color: #495057;
+            line-height: 1.4;
+        }
+
+        .next-action {
+            margin-top: 24px;
+            padding: 16px;
+            background: #d4edda;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+
+        .next-action-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #155724;
+            margin-bottom: 8px;
+        }
+
+        .next-action-text {
+            font-size: 13px;
+            color: #155724;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="score-section">
+                <div class="score-circle">90</div>
+                <div class="score-info">
+                    <h1 class="score-title">Sales Forecast</h1>
+                    <div class="distributor-name">NJ India Securities - ND</div>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-success" title="Approve">👍</button>
+                <button class="btn btn-secondary" title="Reject">👎</button>
+            </div>
+        </div>
+
+        <div class="factors-section">
+            <div class="factors-group">
+                <div class="factors-header positive-header">
+                    <div class="positive-dot"></div>
+                    Positive Factors
+                </div>
+                <div class="factors-list positive-bg">
+                    <div class="factor-item">
+                        <svg class="star-icon positive-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Strong AUM growth at ₹842 Cr with 18.5% YoY increase</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon positive-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Active pipeline of ₹67 Cr in advanced closure stage</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon positive-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Tax-saving season approaching (Jan-Mar peak period)</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon positive-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">12 new RMs onboarded with ramping productivity</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon positive-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">High SBI MF preference at 34% share with 72% client satisfaction</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="factors-group">
+                <div class="factors-header negative-header">
+                    <div class="negative-dot"></div>
+                    Negative Factors
+                </div>
+                <div class="factors-list negative-bg">
+                    <div class="factor-item">
+                        <svg class="star-icon negative-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Market volatility may dampen equity fund appetite</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon negative-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">Rising competition from digital-first platforms</span>
+                    </div>
+                    <div class="factor-item">
+                        <svg class="star-icon negative-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span class="factor-text">New RM team requires 2-3 months for full productivity ramp-up</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-action">
+                <div class="next-action-title">Predicted Q4 FY25 Sales</div>
+                <div class="next-action-text">Forecasted sales of ₹128.7 Cr for Q4 FY25 (Nov-Jan) with 88% confidence. Monthly breakdown: Nov ₹45.2 Cr, Dec ₹38.5 Cr, Jan ₹45.0 Cr. Category split: Equity 45% (₹58 Cr), Hybrid 30% (₹39 Cr), Debt 20% (₹26 Cr), Others 5% (₹6 Cr).</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
