@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Churn Probability - SBI MF Individual Investor</title>
+  <title>Churn Probability - Mutual Fund Investor</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
@@ -60,10 +60,10 @@
     .score-circle::before {
       content: '';
       position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
       border-radius: 50%;
       background: conic-gradient(#ffc107 0deg 162deg, #e9ecef 162deg 360deg);
       z-index: -1;
@@ -91,11 +91,12 @@
       justify-content: center;
       font-size: 18px;
       transition: all 0.2s;
+      box-shadow: none;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
     .btn-success {
@@ -110,69 +111,123 @@
 
     .metrics {
       display: flex;
-      justify-content: space-between;
-      padding: 16px 20px;
+      justify-content: space-around;
+      padding: 20px;
       border-bottom: 1px solid #e9ecef;
       font-size: 14px;
       color: #495057;
       background: #f8f9fa;
     }
 
+    .metric {
+      text-align: center;
+    }
+
     .metric-value {
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 20px;
       color: #212529;
+      display: block;
+      margin-bottom: 4px;
     }
 
     .factors-section {
-      padding: 20px;
+      padding: 24px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .positive-title {
+      color: #0d6efd;
+    }
+
+    .negative-title {
+      color: #dc3545;
+    }
+
+    .section-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .positive-indicator {
+      background: #0d6efd;
+    }
+
+    .negative-indicator {
+      background: #dc3545;
     }
 
     .factor-card {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 14px;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
       font-size: 14px;
-      line-height: 1.4;
+      line-height: 1.5;
+      transition: all 0.2s;
+    }
+
+    .factor-card:hover {
+      transform: translateX(4px);
     }
 
     .factor-card svg {
       width: 20px;
       height: 20px;
       flex-shrink: 0;
+      margin-top: 2px;
     }
 
     .positive {
       background: #e3f2fd;
-      color: #0d6efd;
+      color: #0d47a1;
+      border-left: 3px solid #0d6efd;
     }
 
     .negative {
       background: #ffebee;
-      color: #dc3545;
+      color: #b71c1c;
+      border-left: 3px solid #dc3545;
+    }
+
+    .factors-group {
+      margin-bottom: 24px;
     }
 
     .next-action {
       margin-top: 8px;
-      padding: 16px;
-      background: #fff3cd;
-      border-radius: 8px;
+      padding: 18px;
+      background: linear-gradient(135deg, #fff3cd 0%, #ffe9a8 100%);
+      border-radius: 10px;
       border-left: 4px solid #ffc107;
+      box-shadow: 0 2px 8px rgba(255, 193, 7, 0.2);
     }
 
     .next-action-title {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       color: #856404;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .next-action-text {
       font-size: 13px;
       color: #856404;
-      line-height: 1.4;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -189,53 +244,76 @@
       </div>
     </div>
 
-    <div class="metrics">
-      <div>Engagement Score: <span class="metric-value">92 / 100</span></div>
-      <div>CSAT: <span class="metric-value">4.2 / 10</span></div>
-    </div>
+
 
     <div class="factors-section">
-      <div class="factor-card positive">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-          />
-        </svg>
-        <span>Active SIPs maintained with consistent payments</span>
+      <div class="factors-group">
+        <div class="section-title positive-title">
+          <span class="section-indicator positive-indicator"></span>
+          Positive Factors
+        </div>
+        <div class="factor-card positive">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <span>Active SIPs: 6 funds</span>
+        </div>
+
+        <div class="factor-card positive">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <span>Engagement Score: 85/100</span>
+        </div>
+
+        <div class="factor-card positive">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <span>Avg holding period: 38 months</span>
+        </div>
+
+        <div class="factor-card positive">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <span>Email open rate: 52%</span>
+        </div>
       </div>
 
-      <div class="factor-card negative">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-          />
-        </svg>
-        <span>Drop in transaction frequency in the last quarter</span>
-      </div>
+      <div class="factors-group">
+        <div class="section-title negative-title">
+          <span class="section-indicator negative-indicator"></span>
+          Negative Factors
+        </div>
+        <div class="factor-card negative">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <span>App logins: 2 in last 60 days</span>
+        </div>
 
-      <div class="factor-card positive">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-          />
-        </svg>
-        <span>Engages regularly with fund updates (email open rate > 50%)</span>
-      </div>
+        <div class="factor-card negative">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <span>Last transaction: 92 days ago</span>
+        </div>
 
-      <div class="factor-card negative">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-          />
-        </svg>
-        <span>App login frequency declined in the last 60 days</span>
+        <div class="factor-card negative">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <span>Customer service calls: 0</span>
+        </div>
       </div>
 
       <div class="next-action">
-        <div class="next-action-title">Next Best Action</div>
+        <div class="next-action-title">
+          💡 Next Best Action
+        </div>
         <div class="next-action-text">
-          Schedule a personalized portfolio review call focusing on SIP continuity benefits.
-          Offer a goal-based reminder via app or email to boost re-engagement.
+          Initiate portfolio review call. Highlight tax-saving opportunities and goal tracking features.
         </div>
       </div>
     </div>
