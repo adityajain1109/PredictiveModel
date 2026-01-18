@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Default Risk Prediction</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    padding: 12px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #ffffff;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.score-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ======== FILLED SCORE CIRCLE ======== */
+
+.score-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background:
+        conic-gradient(
+            #28a745 calc(var(--score) * 1%),
+            #e9ecef 0
+        );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.score-circle::after {
+    content: '';
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.score-circle span {
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    font-size: 14px;
+    color: #28a745;
+}
+
+.score-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ================= SECTIONS ================= */
+
+.section {
+    padding: 16px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot-positive { background: #007bff; }
+.dot-negative { background: #dc3545; }
+
+.box {
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.box-positive { background: #e3f2fd; }
+.box-negative { background: #ffebee; }
+
+.item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #495057;
+}
+
+.item:last-child { margin-bottom: 0; }
+
+.star-positive { color: #007bff; }
+.star-negative { color: #dc3545; }
+
+/* ================= NEXT ACTION ================= */
+
+.next-action {
+    margin: 16px;
+    padding: 16px;
+    background: #d4edda;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+}
+
+.next-action-title {
+    font-weight: 600;
+    color: #155724;
+    margin-bottom: 6px;
+}
+
+.next-action-text {
+    font-size: 13px;
+    color: #155724;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="score-section">
+            <div class="score-circle" style="--score:45;">
+                <span>45%</span>
+            </div>
+            <div class="score-title">Default Risk Prediction</div>
+        </div>
+    </div>
+
+    <!-- POSITIVE INDICATORS -->
+    <div class="section">
+        <div class="section-header" style="color:#007bff;">
+            <div class="dot dot-positive"></div>
+            Positive Indicators
+        </div>
+
+        <div class="box box-positive">
+            <div class="item">
+                <span class="star-positive">★</span>
+                Regular monthly income credits
+            </div>
+            <div class="item">
+                <span class="star-positive">★</span>
+                No recent delinquency or defaults
+            </div>
+            <div class="item">
+                <span class="star-positive">★</span>
+                Stable employment history
+            </div>
+            <div class="item">
+                <span class="star-positive">★</span>
+                Active loan servicing track record
+            </div>
+        </div>
+    </div>
+
+    <!-- RISK INDICATORS -->
+    <div class="section">
+        <div class="section-header" style="color:#dc3545;">
+            <div class="dot dot-negative"></div>
+            Risk Indicators
+        </div>
+
+        <div class="box box-negative">
+            <div class="item">
+                <span class="star-negative">★</span>
+                High obligation-to-income ratio
+            </div>
+            <div class="item">
+                <span class="star-negative">★</span>
+                Limited liquid savings buffer
+            </div>
+            <div class="item">
+                <span class="star-negative">★</span>
+                Multiple recent credit enquiries
+            </div>
+        </div>
+    </div>
+
+    <!-- NEXT BEST ACTION -->
+    <div class="next-action">
+        <div class="next-action-title">Risk Recommendation</div>
+        <div class="next-action-text">
+            Route application for manual review or offer reduced limit with tighter risk controls.
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
