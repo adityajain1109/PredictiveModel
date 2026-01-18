@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propensity to Buy</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    padding: 12px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #ffffff;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.score-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ======== FILLED SCORE CIRCLE ======== */
+
+.score-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background:
+        conic-gradient(
+            #28a745 calc(var(--score) * 1%),
+            #e9ecef 0
+        );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.score-circle::after {
+    content: '';
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.score-circle span {
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    font-size: 14px;
+    color: #28a745;
+}
+
+.score-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ================= SECTIONS ================= */
+
+.section {
+    padding: 16px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot-positive { background: #007bff; }
+.dot-negative { background: #dc3545; }
+
+.box {
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.box-positive { background: #e3f2fd; }
+.box-negative { background: #ffebee; }
+
+.item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #495057;
+}
+
+.item:last-child { margin-bottom: 0; }
+
+.star-positive { color: #007bff; }
+.star-negative { color: #dc3545; }
+
+/* ================= NEXT ACTION ================= */
+
+.next-action {
+    margin: 16px;
+    padding: 16px;
+    background: #d4edda;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+}
+
+.next-action-title {
+    font-weight: 600;
+    color: #155724;
+    margin-bottom: 6px;
+}
+
+.next-action-text {
+    font-size: 13px;
+    color: #155724;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="score-section">
+            <div class="score-circle" style="--score:78;">
+                <span>78%</span>
+            </div>
+            <div class="score-title">Propensity to Buy</div>
+        </div>
+    </div>
+
+    <!-- SUPPORTING FACTORS -->
+    <div class="section">
+        <div class="section-header" style="color:#007bff;">
+            <div class="dot dot-positive"></div>
+            Supporting Factors
+        </div>
+
+        <div class="box box-positive">
+            <div class="item">
+                <span class="star-positive">★</span>
+                High digital engagement across channels
+            </div>
+            <div class="item">
+                <span class="star-positive">★</span>
+                Recent product enquiry activity
+            </div>
+            <div class="item">
+                <span class="star-positive">★</span>
+                Existing banking relationship
+            </div>
+            <div class="item">
+                <span class="star-positive">★</span>
+                Stable income and employment profile
+            </div>
+        </div>
+    </div>
+
+    <!-- RISK / LIMITING FACTORS -->
+    <div class="section">
+        <div class="section-header" style="color:#dc3545;">
+            <div class="dot dot-negative"></div>
+            Risk / Limiting Factors
+        </div>
+
+        <div class="box box-negative">
+            <div class="item">
+                <span class="star-negative">★</span>
+                No prior usage of this product category
+            </div>
+            <div class="item">
+                <span class="star-negative">★</span>
+                Moderate existing financial commitments
+            </div>
+        </div>
+    </div>
+
+    <!-- NEXT BEST ACTION -->
+    <div class="next-action">
+        <div class="next-action-title">Next Best Action</div>
+        <div class="next-action-text">
+            Trigger a personalised offer with a limited-time incentive and simplified onboarding.
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
