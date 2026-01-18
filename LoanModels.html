@@ -3,150 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Predictive Models</title>
+<title>Predictive AI Models</title>
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #ffffff;
-    padding: 12px;
+    background: #f8f9fb;
+    padding: 20px;
 }
 
 /* ===== LAYOUT ===== */
-
 .cards-wrapper {
     display: flex;
-    gap: 12px;
-    align-items: stretch;
+    gap: 20px;
 }
 
 /* ===== CARD ===== */
-
 .card {
-    width: 300px;
-    min-height: 540px;
-    border: 1px solid #e6e6e6;
-    border-radius: 14px;
     background: #ffffff;
+    border-radius: 18px;
+    padding: 20px;
+    width: 360px;
+    border: 1px solid #ececec;
     display: flex;
     flex-direction: column;
 }
 
 /* ===== HEADER ===== */
-
-.header {
+.card-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px;
-    border-bottom: 1px solid #e9ecef;
+    gap: 14px;
+    margin-bottom: 18px;
 }
 
-.score-circle {
+/* ===== SCORE RING ===== */
+.score-ring {
+    --score: 70;
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: conic-gradient(#28a745 calc(var(--score) * 1%), #e9ecef 0);
+    background:
+        conic-gradient(#28a745 calc(var(--score) * 1%), #e5e5e5 0);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
-.score-circle::after {
-    content: '';
-    position: absolute;
-    width: 44px;
-    height: 44px;
-    background: #ffffff;
+.score-ring span {
+    width: 42px;
+    height: 42px;
+    background: #fff;
     border-radius: 50%;
-}
-
-.score-circle span {
-    position: relative;
-    z-index: 1;
-    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
     font-size: 14px;
-    color: #28a745;
 }
 
-.score-title {
-    font-size: 15px;
+.card-title {
+    font-size: 16px;
     font-weight: 600;
 }
 
 /* ===== SECTIONS ===== */
-
 .section {
-    padding: 12px 16px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    padding: 14px;
 }
 
-.section-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.section.blue { background: #eaf3fb; }
+.section.red { background: #fdeeee; }
+
+.section-title {
     font-weight: 600;
-    margin-bottom: 10px;
     font-size: 14px;
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-}
-
-.dot-positive { background: #007bff; }
-.dot-negative { background: #dc3545; }
-
-.box {
-    padding: 12px;
-    border-radius: 10px;
-}
-
-.box-positive { background: #e3f2fd; }
-.box-negative { background: #ffebee; }
-
-.item {
-    display: flex;
-    gap: 8px;
     margin-bottom: 10px;
-    font-size: 13px;
-    color: #495057;
 }
 
-.item:last-child { margin-bottom: 0; }
+.section-title.blue { color: #1a73e8; }
+.section-title.red { color: #e53935; }
 
-.star-positive { color: #007bff; }
-.star-negative { color: #dc3545; }
+/* ===== LIST ===== */
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-/* ===== ANALYSIS / ACTION ===== */
+.list li {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
 
-.next-action {
-    margin: 12px 16px 16px;
-    padding: 12px;
-    background: #d4edda;
-    border-radius: 10px;
-    border-left: 4px solid #28a745;
+.star.blue { color: #1a73e8; }
+.star.red { color: #e53935; }
+
+/* ===== ANALYSIS ===== */
+.analysis {
     margin-top: auto;
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 14px;
 }
 
-.next-action-title {
+.analysis-title {
     font-weight: 600;
-    font-size: 13px;
     margin-bottom: 6px;
-    color: #155724;
 }
 
-.next-action-text {
-    font-size: 12px;
-    color: #155724;
+.analysis-text {
+    font-size: 13px;
+    color: #555;
 }
 </style>
 </head>
@@ -155,117 +132,108 @@ body {
 
 <div class="cards-wrapper">
 
-    <!-- APPLICATION SCORE -->
-    <div class="card">
-        <div class="header">
-            <div class="score-circle" style="--score:70;"><span>70</span></div>
-            <div class="score-title">Application Score</div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <div class="dot dot-positive"></div> Supporting Factors
-            </div>
-            <div class="box box-positive">
-                <div class="item"><span class="star-positive">★</span> Stable monthly income of RM 4,950</div>
-                <div class="item"><span class="star-positive">★</span> 20 years total work experience</div>
-                <div class="item"><span class="star-positive">★</span> Manageable EMI exposure (RM 450)</div>
-                <div class="item"><span class="star-positive">★</span> Healthy repayment behaviour</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <div class="dot dot-negative"></div> Risk Factors
-            </div>
-            <div class="box box-negative">
-                <div class="item"><span class="star-negative">★</span> Existing home loan obligation</div>
-                <div class="item"><span class="star-negative">★</span> Moderate liquidity buffer</div>
-                <div class="item"><span class="star-negative">★</span> New-to-bank profile</div>
-            </div>
-        </div>
-
-        <div class="next-action">
-            <div class="next-action-title">Recommended Action</div>
-            <div class="next-action-text">
-                Proceed with assisted approval and monitor early repayment behaviour.
-            </div>
-        </div>
+<!-- ================= APPLICATION SCORE ================= -->
+<div class="card">
+    <div class="card-header">
+        <div class="score-ring" style="--score:70"><span>70</span></div>
+        <div class="card-title">Application Score</div>
     </div>
 
-    <!-- DEFAULT RISK PREDICTION -->
-    <div class="card">
-        <div class="header">
-            <div class="score-circle" style="--score:45;"><span>45</span></div>
-            <div class="score-title">Default Risk Prediction</div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <div class="dot dot-positive"></div> Positive Indicators
-            </div>
-            <div class="box box-positive">
-                <div class="item"><span class="star-positive">★</span> Regular income credits</div>
-                <div class="item"><span class="star-positive">★</span> No recent delinquencies</div>
-                <div class="item"><span class="star-positive">★</span> Stable employment profile</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <div class="dot dot-negative"></div> Risk Indicators
-            </div>
-            <div class="box box-negative">
-                <div class="item"><span class="star-negative">★</span> Elevated obligation-to-income</div>
-                <div class="item"><span class="star-negative">★</span> Limited savings buffer</div>
-                <div class="item"><span class="star-negative">★</span> Multiple recent enquiries</div>
-            </div>
-        </div>
-
-        <div class="next-action">
-            <div class="next-action-title">Risk Recommendation</div>
-            <div class="next-action-text">
-                Route for manual review or offer reduced exposure.
-            </div>
-        </div>
+    <div class="section blue">
+        <div class="section-title blue">● Supporting Factors</div>
+        <ul class="list">
+            <li><span class="star blue">★</span> Stable monthly income of RM 4,950</li>
+            <li><span class="star blue">★</span> 20 years total work experience</li>
+            <li><span class="star blue">★</span> Manageable EMI exposure (RM 450)</li>
+            <li><span class="star blue">★</span> Healthy repayment behaviour</li>
+        </ul>
     </div>
 
-    <!-- PROPENSITY TO BUY -->
-    <div class="card">
-        <div class="header">
-            <div class="score-circle" style="--score:78;"><span>78</span></div>
-            <div class="score-title">Propensity to Buy</div>
-        </div>
+    <div class="section red">
+        <div class="section-title red">● Risk / Limiting Factors</div>
+        <ul class="list">
+            <li><span class="star red">★</span> Existing home loan obligation</li>
+            <li><span class="star red">★</span> Moderate liquidity buffer</li>
+            <li><span class="star red">★</span> New-to-product applicant</li>
+        </ul>
+    </div>
 
-        <div class="section">
-            <div class="section-header">
-                <div class="dot dot-positive"></div> Growth Drivers
-            </div>
-            <div class="box box-positive">
-                <div class="item"><span class="star-positive">★</span> Recent product enquiry</div>
-                <div class="item"><span class="star-positive">★</span> High digital engagement</div>
-                <div class="item"><span class="star-positive">★</span> Existing banking relationship</div>
-                <div class="item"><span class="star-positive">★</span> Stable income profile</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <div class="dot dot-negative"></div> Barriers
-            </div>
-            <div class="box box-negative">
-                <div class="item"><span class="star-negative">★</span> No prior usage of product category</div>
-                <div class="item"><span class="star-negative">★</span> Moderate financial commitments</div>
-            </div>
-        </div>
-
-        <div class="next-action">
-            <div class="next-action-title">Next Best Action</div>
-            <div class="next-action-text">
-                Trigger personalised offer with simplified onboarding.
-            </div>
+    <div class="analysis">
+        <div class="analysis-title">Analysis</div>
+        <div class="analysis-text">
+            Applicant demonstrates a balanced credit profile with acceptable risk.
+            Assisted approval is recommended with controlled exposure.
         </div>
     </div>
+</div>
+
+<!-- ================= DEFAULT RISK PREDICTION ================= -->
+<div class="card">
+    <div class="card-header">
+        <div class="score-ring" style="--score:45"><span>45</span></div>
+        <div class="card-title">Default Risk Prediction</div>
+    </div>
+
+    <div class="section blue">
+        <div class="section-title blue">● Positive Indicators</div>
+        <ul class="list">
+            <li><span class="star blue">★</span> Regular income credits observed</li>
+            <li><span class="star blue">★</span> No recent delinquencies</li>
+            <li><span class="star blue">★</span> Stable employment profile</li>
+        </ul>
+    </div>
+
+    <div class="section red">
+        <div class="section-title red">● Risk Indicators</div>
+        <ul class="list">
+            <li><span class="star red">★</span> Elevated obligation-to-income ratio</li>
+            <li><span class="star red">★</span> Limited liquid savings buffer</li>
+            <li><span class="star red">★</span> Multiple recent credit enquiries</li>
+        </ul>
+    </div>
+
+    <div class="analysis">
+        <div class="analysis-title">Risk Assessment</div>
+        <div class="analysis-text">
+            Default risk is moderate. Recommend tighter controls, reduced exposure,
+            or manual review before approval.
+        </div>
+    </div>
+</div>
+
+<!-- ================= PROPENSITY TO BUY ================= -->
+<div class="card">
+    <div class="card-header">
+        <div class="score-ring" style="--score:78"><span>78</span></div>
+        <div class="card-title">Propensity to Buy</div>
+    </div>
+
+    <div class="section blue">
+        <div class="section-title blue">● Growth Drivers</div>
+        <ul class="list">
+            <li><span class="star blue">★</span> Recent product enquiry activity</li>
+            <li><span class="star blue">★</span> High digital engagement levels</li>
+            <li><span class="star blue">★</span> Existing banking relationship</li>
+            <li><span class="star blue">★</span> Stable income profile</li>
+        </ul>
+    </div>
+
+    <div class="section red">
+        <div class="section-title red">● Barriers</div>
+        <ul class="list">
+            <li><span class="star red">★</span> No prior usage of this product</li>
+            <li><span class="star red">★</span> Competing credit commitments</li>
+        </ul>
+    </div>
+
+    <div class="analysis">
+        <div class="analysis-title">Next Best Action</div>
+        <div class="analysis-text">
+            High likelihood of conversion. Trigger personalised offer with
+            simplified onboarding and time-bound incentive.
+        </div>
+    </div>
+</div>
 
 </div>
 
